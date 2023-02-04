@@ -126,3 +126,54 @@ function verfierCBornesJoueurs(){
 		messi.yVel *= -0.5;
 	}
 }
+function gereeJoueur(){
+	c.save();
+	c.fillStyle = "yellow";
+	c.beginPath();
+	c.arc(ronaldo.x,ronaldo.y,ronaldo.size,0,Math.PI*2);
+	c.fill();
+	c.closePath();
+	c.beginPath();
+	c.fillStyle = "white";
+	c.arc(messi.x,messi.y,messi.size,0,Math.PI*2);
+	c.fill();
+	c.closePath();
+	c.restore();
+}
+
+function gererGardien(){
+	c.save();
+	c.beginPath();
+  c.fillStyle = "#0f9e0f";
+  	c.lineWidth =3;
+    c.fillRect(0,80,100,350);
+  c.strokeStyle  = "rgba(255,255,255,0.6)";
+  c.strokeRect(0,80,100,350);
+	  c.stroke();
+  	c.closePath();
+//-----------------
+  c.beginPath();
+  c.fillStyle = "#0f9e0f";
+  	c.lineWidth =3;
+    c.fillRect(800,80,100,350);
+  c.strokeStyle  = "rgba(255,255,255,0.6)";
+c.strokeRect(800,80,100,350);
+	c.stroke();
+  	c.closePath();
+//-----------------
+	c.beginPath();
+	c.moveTo(0,150);
+	c.lineTo(0,350);
+	c.strokeStyle = "yellow";
+	c.lineWidth = 20;
+	c.stroke();
+	c.closePath();
+	c.beginPath();
+	c.moveTo(canvas.width,150);
+	c.lineTo(canvas.width,350);
+	c.strokeStyle = "white";
+	c.lineWidth = 20;
+	c.stroke();
+	c.closePath();
+	c.restore();
+}
