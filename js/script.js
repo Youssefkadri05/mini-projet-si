@@ -108,6 +108,39 @@ document.onkeyup = function(e){
 }
 
 
+document.onkeydown = function(e){
+	if(e.keyCode === 90){
+    //z
+		Boutton_Z = true;
+	}
+	if(e.keyCode === 81){
+    //bouton q
+		Boutton_Q = true;
+	}
+	if(e.keyCode === 68){
+		Boutton_D = true;
+	}
+	if(e.keyCode === 83){
+		Boutton_S = true;
+	}
+	if(e.keyCode === 38){
+		ButtonHaut = true;
+	}
+	if(e.keyCode === 37){
+		ButtonGauche = true;
+	}
+	if(e.keyCode === 40){
+		ButtonBas = true;
+	}
+	if(e.keyCode === 39){
+		ButtonDroit = true;
+	}
+	if(e.keyCode === 27){
+		quitte = true;
+
+	}
+}
+
 function verfierClavierKeyCode(){
 	if(Boutton_Z){
 		if(ronaldo.yVel > -ronaldo.maxSpeed){
