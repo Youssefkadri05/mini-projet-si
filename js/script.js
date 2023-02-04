@@ -89,3 +89,40 @@ function collision(ob1,ob2){
 function distance(x1,y1,x2,y2){
 	return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2));
 }
+
+function verfierCBornesJoueurs(){
+	if(ronaldo.y - ronaldo.size < 0){
+		ronaldo.y = 0 + ronaldo.size;
+		ronaldo.yVel *= -0.5;
+	}
+	if(ronaldo.x + ronaldo.size > canvas.width){
+		ronaldo.x = canvas.width - ronaldo.size;
+		ronaldo.xVel *= -0.5;
+	}
+	if(ronaldo.y + ronaldo.size > canvas.height){
+		ronaldo.y = canvas.height - ronaldo.size;
+		ronaldo.yVel *= -0.5;
+	}
+	if(ronaldo.x - ronaldo.size < 0){
+		ronaldo.x = 0 + ronaldo.size;
+		ronaldo.xVel *= -0.5;
+	}
+	//-----------------------------------
+	if(messi.y + messi.size > canvas.height){
+		messi.y = canvas.height - messi.size;
+		messi.yVel *= -0.5;
+	}
+	if(messi.x + messi.size > canvas.width){
+		messi.x = canvas.width - messi.size;
+		messi.xVel *= -0.5;
+	}
+	if(messi.x - messi.size < 0){
+		messi.x = 0 + messi.size;
+		messi.xVel *= -0.5;
+	}
+	
+	if(messi.y - messi.size < 0){
+		messi.y = 0 + messi.size;
+		messi.yVel *= -0.5;
+	}
+}
