@@ -25,3 +25,15 @@ var ButtonGauche = false;
 var ButtonDroit = false;
 var quitte = false;
 var ballon = new Ball(450,250);
+
+function Player(x,y){
+	this.x = x;
+	this.y = y;
+	this.yVel = 0;
+	this.size = 20;
+	this.accel = 0.55;
+	this.xVel = 0;
+	this.score = 0;
+	this.decel = 0.55;
+	this.maxSpeed = 5;
+}
