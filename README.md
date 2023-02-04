@@ -2,7 +2,7 @@
 - AMRI Ibrahim
 - KADRI Youssef
 - ABADA Fatima Ezzahra
-- LERHIBI Douha
+- LERHRIBI Douha
 
 # mini-projet-si
 
