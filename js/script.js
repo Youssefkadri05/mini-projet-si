@@ -107,6 +107,113 @@ document.onkeyup = function(e){
 
 }
 
+
+function verfierClavierKeyCode(){
+	if(Boutton_Z){
+		if(ronaldo.yVel > -ronaldo.maxSpeed){
+			ronaldo.yVel -= ronaldo.accel;	
+		} else {
+			ronaldo.yVel = -ronaldo.maxSpeed;
+		}
+	} else {
+		if(ronaldo.yVel < 0){
+			ronaldo.yVel += ronaldo.decel;
+			if(ronaldo.yVel > 0) ronaldo.yVel = 0;	
+		}
+	}
+	if(Boutton_S){
+		if(ronaldo.yVel < ronaldo.maxSpeed){
+			ronaldo.yVel += ronaldo.accel;	
+		} else {
+			ronaldo.yVel = ronaldo.maxSpeed;
+		}
+	} else {
+		if(ronaldo.yVel > 0){
+			ronaldo.yVel -= ronaldo.decel;
+			if(ronaldo.yVel < 0) ronaldo.yVel = 0;
+		}
+	}
+	if(Boutton_Q){
+		if(ronaldo.xVel > -ronaldo.maxSpeed){
+			ronaldo.xVel -= ronaldo.accel;	
+		} else {
+			ronaldo.xVel = -ronaldo.maxSpeed;
+		}
+	} else {
+		if(ronaldo.xVel < 0){
+			ronaldo.xVel += ronaldo.decel;
+			if(ronaldo.xVel > 0) ronaldo.xVel = 0;	
+		}
+	}
+	if(Boutton_D){
+		if(ronaldo.xVel < ronaldo.maxSpeed){
+			ronaldo.xVel += ronaldo.accel;	
+		} else {
+			ronaldo.xVel = ronaldo.maxSpeed;
+		}
+	} else {
+		if(ronaldo.xVel > 0){
+			ronaldo.xVel -= ronaldo.decel;
+			if(ronaldo.xVel < 0) ronaldo.xVel = 0;
+		}
+	}if(quitte){
+		span2.onclick= function() {
+		  modal2.style.display = "none";
+		}
+	}
+
+	//Joueur2
+
+	if(ButtonHaut){
+		if(messi.yVel > -messi.maxSpeed){
+			messi.yVel -= messi.accel;	
+		} else {
+			messi.yVel = -messi.maxSpeed;
+		}
+	} else {
+		if(messi.yVel < 0){
+			messi.yVel += messi.decel;
+			if(messi.yVel > 0) messi.yVel = 0;	
+		}
+	}
+	if(ButtonBas){
+		if(messi.yVel < messi.maxSpeed){
+			messi.yVel += messi.accel;	
+		} else {
+			messi.yVel = messi.maxSpeed;
+		}
+	} else {
+		if(messi.yVel > 0){
+			messi.yVel -= messi.decel;
+			if(messi.yVel < 0) messi.yVel = 0;
+		}
+	}
+	if(ButtonGauche){
+		if(messi.xVel > -messi.maxSpeed){
+			messi.xVel -= messi.accel;	
+		} else {
+			messi.xVel = -messi.maxSpeed;
+		}
+	} else {
+		if(messi.xVel < 0){
+			messi.xVel += messi.decel;
+			if(messi.xVel > 0) messi.xVel = 0;	
+		}
+	}
+	if(ButtonDroit){
+		if(messi.xVel < messi.maxSpeed){
+			messi.xVel += messi.accel;	
+		} else {
+			messi.xVel = messi.maxSpeed;
+		}
+	} else {
+		if(messi.xVel > 0){
+			messi.xVel -= messi.decel;
+			if(messi.xVel < 0) messi.xVel = 0;
+		}
+	}
+}
+
 function gereeBall(){
 	c.save();
 	c.beginPath();
