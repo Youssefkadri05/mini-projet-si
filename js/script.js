@@ -74,3 +74,14 @@ function verifierBornesBall(){
 		ballon.yVel *= -1.5;
 	}
 }
+
+
+function gereeBall(){
+	c.save();
+	c.beginPath();
+	c.fillStyle = "black";
+	c.arc(ballon.x,ballon.y,ballon.size,0,Math.PI*2);
+	c.fill();
+	c.closePath();
+	c.restore();
+}
