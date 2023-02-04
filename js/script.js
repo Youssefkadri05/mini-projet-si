@@ -1,4 +1,32 @@
 
+var canvas = document.getElementById("canvas");
+var c = canvas.getContext("2d");
+var out = document.getElementById("out");
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+// modal pour afficher images 
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+var modal2= document.getElementById("myModal2");
+//  <span> element pour fermer modal
+var span = document.getElementsByClassName("close")[0];
+
+var span2 = document.getElementsByClassName("close")[1];
+
+var init = requestAnimationFrame(start);
+var ronaldo = new Player(10,250);
+var messi = new Player(950,250);
+var Boutton_Z = false;
+var Boutton_S = false;
+var Boutton_Q = false;
+var Boutton_D = false;
+var ButtonHaut = false;
+var ButtonBas = false;
+var ButtonGauche = false;
+var ButtonDroit = false;
+var quitte = false;
+var ballon = new Ball(450,250);
+
 // regler la ballon 
 function Ball(x,y){
 	this.x = x;
@@ -255,4 +283,156 @@ function gereeBall(){
 	c.fill();
 	c.closePath();
 	c.restore();
+
+function Player(x,y){
+	this.x = x;
+	this.y = y;
+	this.yVel = 0;
+	this.size = 20;
+	this.accel = 0.55;
+	this.xVel = 0;
+	this.score = 0;
+	this.decel = 0.55;
+	this.maxSpeed = 5;
+}
+
+function refresh(){
+	var but1 = ronaldo.score;
+	var but2 = messi.score;
+	ronaldo = new Player(100,250);
+	ronaldo.score = but1;
+	messi = new Player(800,250);
+	messi.score = but2;
+	ballon = new Ball(450,250);
+	Boutton_Z = false;
+	Boutton_S = false;
+	Boutton_Q = false;
+	Boutton_D = false;
+	ButtonHaut = false;
+	ButtonBas = false;
+	ButtonGauche = false;
+	ButtonDroit = false;
+	quitte = false;
+}
+
+function deplaceJoueur(){
+	ronaldo.x += ronaldo.xVel;
+	ronaldo.y += ronaldo.yVel;
+	messi.x += messi.xVel;
+	messi.y += messi.yVel;
+}
+
+function verifierImpactEntreJoueur(){
+	//savoir la distace entre la ballon et le joueur 
+	var p1_ball_distance = distance(ronaldo.x,ronaldo.y,ballon.x,ballon.y) - ronaldo.size - ballon.size;
+	// si <0 ctd le jouer toucher la ballon 
+	if(p1_ball_distance < 0){
+		collision(ballon,ronaldo);
+	}
+	var p2_ball_distance = distance(messi.x,messi.y,ballon.x,ballon.y) - messi.size - ballon.size;
+	if(p2_ball_distance < 0){
+		collision(ballon,messi);
+	}
+}
+
+function collision(ob1,ob2){
+	var dx = (ob1.x - ob2.x) / (ob1.size);
+	var dy = (ob1.y - ob2.y) / (ob1.size);
+	ob2.xVel = -dx;
+	ob2.yVel = -dy;
+	ob1.xVel = dx;
+	ob1.yVel = dy;
+}
+
+function distance(x1,y1,x2,y2){
+	return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2));
+}
+
+function verfierCBornesJoueurs(){
+	if(ronaldo.y - ronaldo.size < 0){
+		ronaldo.y = 0 + ronaldo.size;
+		ronaldo.yVel *= -0.5;
+	}
+	if(ronaldo.x + ronaldo.size > canvas.width){
+		ronaldo.x = canvas.width - ronaldo.size;
+		ronaldo.xVel *= -0.5;
+	}
+	if(ronaldo.y + ronaldo.size > canvas.height){
+		ronaldo.y = canvas.height - ronaldo.size;
+		ronaldo.yVel *= -0.5;
+	}
+	if(ronaldo.x - ronaldo.size < 0){
+		ronaldo.x = 0 + ronaldo.size;
+		ronaldo.xVel *= -0.5;
+	}
+	//-----------------------------------
+	if(messi.y + messi.size > canvas.height){
+		messi.y = canvas.height - messi.size;
+		messi.yVel *= -0.5;
+	}
+	if(messi.x + messi.size > canvas.width){
+		messi.x = canvas.width - messi.size;
+		messi.xVel *= -0.5;
+	}
+	if(messi.x - messi.size < 0){
+		messi.x = 0 + messi.size;
+		messi.xVel *= -0.5;
+	}
+	
+	if(messi.y - messi.size < 0){
+		messi.y = 0 + messi.size;
+		messi.yVel *= -0.5;
+	}
+}
+function gereeJoueur(){
+	c.save();
+	c.fillStyle = "yellow";
+	c.beginPath();
+	c.arc(ronaldo.x,ronaldo.y,ronaldo.size,0,Math.PI*2);
+	c.fill();
+	c.closePath();
+	c.beginPath();
+	c.fillStyle = "white";
+	c.arc(messi.x,messi.y,messi.size,0,Math.PI*2);
+	c.fill();
+	c.closePath();
+	c.restore();
+}
+
+function gererGardien(){
+	c.save();
+	c.beginPath();
+  c.fillStyle = "#0f9e0f";
+  	c.lineWidth =3;
+    c.fillRect(0,80,100,350);
+  c.strokeStyle  = "rgba(255,255,255,0.6)";
+  c.strokeRect(0,80,100,350);
+	  c.stroke();
+  	c.closePath();
+//-----------------
+  c.beginPath();
+  c.fillStyle = "#0f9e0f";
+  	c.lineWidth =3;
+    c.fillRect(800,80,100,350);
+  c.strokeStyle  = "rgba(255,255,255,0.6)";
+c.strokeRect(800,80,100,350);
+	c.stroke();
+  	c.closePath();
+//-----------------
+	c.beginPath();
+	c.moveTo(0,150);
+	c.lineTo(0,350);
+	c.strokeStyle = "yellow";
+	c.lineWidth = 20;
+	c.stroke();
+	c.closePath();
+	c.beginPath();
+	c.moveTo(canvas.width,150);
+	c.lineTo(canvas.width,350);
+	c.strokeStyle = "white";
+	c.lineWidth = 20;
+	c.stroke();
+	c.closePath();
+	c.restore();
+>>>>>>> feature/gestion_de_joueurs
 }
