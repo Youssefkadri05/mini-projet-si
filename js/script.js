@@ -76,6 +76,37 @@ function verifierBornesBall(){
 }
 
 
+document.onkeyup = function(e){
+	if(e.keyCode === 90){
+		Boutton_Z = false;
+	}
+	if(e.keyCode === 81){
+		Boutton_Q = false;
+	}
+	if(e.keyCode === 68){
+		Boutton_D = false;
+	}
+	if(e.keyCode === 83){
+		Boutton_S = false;
+	}
+	if(e.keyCode === 38){
+		ButtonHaut = false;
+	}
+	if(e.keyCode === 37){
+		ButtonGauche = false;
+	}
+	if(e.keyCode === 40){
+		ButtonBas = false;
+	}
+	if(e.keyCode === 39){
+		ButtonDroit = false;
+	}
+	if(e.keyCode === 27){
+		quitte = false;
+	}
+
+}
+
 function gereeBall(){
 	c.save();
 	c.beginPath();
