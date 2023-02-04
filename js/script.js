@@ -37,3 +37,29 @@ function Player(x,y){
 	this.decel = 0.55;
 	this.maxSpeed = 5;
 }
+
+function refresh(){
+	var but1 = ronaldo.score;
+	var but2 = messi.score;
+	ronaldo = new Player(100,250);
+	ronaldo.score = but1;
+	messi = new Player(800,250);
+	messi.score = but2;
+	ballon = new Ball(450,250);
+	Boutton_Z = false;
+	Boutton_S = false;
+	Boutton_Q = false;
+	Boutton_D = false;
+	ButtonHaut = false;
+	ButtonBas = false;
+	ButtonGauche = false;
+	ButtonDroit = false;
+	quitte = false;
+}
+
+function deplaceJoueur(){
+	ronaldo.x += ronaldo.xVel;
+	ronaldo.y += ronaldo.yVel;
+	messi.x += messi.xVel;
+	messi.y += messi.yVel;
+}
