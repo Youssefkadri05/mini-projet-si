@@ -32,3 +32,45 @@ function deplaceBall(){
 	ballon.x += ballon.xVel;
 	ballon.y += ballon.yVel;
 }
+
+function verifierBornesBall(){
+  //but pour ronaldo
+	if(ballon.x + ballon.size > canvas.width){
+		if(ballon.y > 150 && ballon.y < 350){
+			ronaldo.score++;
+			refresh();
+     modal.style.display = "block";
+    
+      span.onclick = function() {
+  		modal.style.display = "none";
+}
+			return;
+		} 
+		ballon.x = canvas.width - ballon.size;
+		ballon.xVel *= -1.5;
+	}
+	  //but pour messi
+	if(ballon.x - ballon.size < 0){
+		if(ballon.y > 150 && ballon.y < 350){
+			messi.score++;
+			refresh();
+			  modal2.style.display= "block";
+			  span2.onclick= function() {
+			  modal2.style.display = "none";
+			}
+    
+			return;
+		}
+		ballon.x = 0 + ballon.size;
+		ballon.xVel *= -1.5;
+	}
+
+	if(ballon.y - ballon.size < 0){
+		ballon.y = 0 + ballon.size;
+		ballon.yVel *= -1.5;
+	}
+	if(ballon.y + ballon.size > canvas.height){
+		ballon.y = canvas.height - ballon.size;
+		ballon.yVel *= -1.5;
+	}
+}
