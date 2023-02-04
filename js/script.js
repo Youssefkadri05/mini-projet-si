@@ -63,3 +63,29 @@ function deplaceJoueur(){
 	messi.x += messi.xVel;
 	messi.y += messi.yVel;
 }
+
+function verifierImpactEntreJoueur(){
+	//savoir la distace entre la ballon et le joueur 
+	var p1_ball_distance = distance(ronaldo.x,ronaldo.y,ballon.x,ballon.y) - ronaldo.size - ballon.size;
+	// si <0 ctd le jouer toucher la ballon 
+	if(p1_ball_distance < 0){
+		collision(ballon,ronaldo);
+	}
+	var p2_ball_distance = distance(messi.x,messi.y,ballon.x,ballon.y) - messi.size - ballon.size;
+	if(p2_ball_distance < 0){
+		collision(ballon,messi);
+	}
+}
+
+function collision(ob1,ob2){
+	var dx = (ob1.x - ob2.x) / (ob1.size);
+	var dy = (ob1.y - ob2.y) / (ob1.size);
+	ob2.xVel = -dx;
+	ob2.yVel = -dy;
+	ob1.xVel = dx;
+	ob1.yVel = dy;
+}
+
+function distance(x1,y1,x2,y2){
+	return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2));
+}
